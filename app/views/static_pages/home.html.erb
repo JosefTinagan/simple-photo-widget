@@ -1,0 +1,13 @@
+<h1>Home Page</h1>
+
+<%= form_tag(root_url, method: "get") do %>
+	<%= label_tag(:flickr_id, "Enter your id:") %>
+	<%= text_field_tag(:flickr_id) %>
+
+	<%= submit_tag("Search") %>
+<% end %>
+
+<br>
+<% cache ("flickr_sidebar") do %>
+ <%= render_flickr_sidebar_widget(@flickr_id) %>
+ <% end %>
